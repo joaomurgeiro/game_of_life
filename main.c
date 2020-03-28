@@ -21,6 +21,7 @@
 #include "config.h"
 #include "game.h"
 
+// some minor changes
 int main(int argc, char *argv[])
 {
   GameConfig *config;
