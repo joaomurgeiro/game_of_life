@@ -110,5 +110,6 @@ GameConfig *game_config_new_from_cli(int argc, char *argv[])
   config->input_file = file;
   config->quiet = quiet;
 
+
   return config;
 }
