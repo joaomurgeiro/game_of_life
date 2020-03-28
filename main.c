@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "config.h"
 #include "game.h"
 
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
 
     exit(1);
   }
-
+  
   printf("Seed board:\n");
   game_print_board(game);
 
@@ -50,8 +51,18 @@ int main(int argc, char *argv[])
       game_free(game);
     }
 
-    printf("\nGeneration %zu:\n", generation);
-    game_print_board(game);
+    if( game_config_get_quiet(config) == 0){
+      if( generation == game_config_get_generations(config)){
+        printf("\033c");
+        printf("Generation %zu:\n", generation);
+        game_print_board(game);
+      }
+    } else {
+      printf("\033c");
+      usleep(game_config_get_miliseconds(config)*1000);
+      printf("Generation %zu:\n", generation);
+      game_print_board(game);
+    }
   }
 
   game_config_free(config);

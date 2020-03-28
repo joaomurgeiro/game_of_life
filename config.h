@@ -34,6 +34,9 @@
 typedef struct {
   size_t generations; /**< Number of generations for which to run the game. */
   FILE *input_file;   /**< The file with the seed board. */
+  size_t miliseconds; /**< Number of miliseconds of pause between screens. */
+  size_t quiet; /* 0 = true, 1= false*/
+
 } GameConfig;
 
 /**
@@ -51,6 +54,24 @@ void game_config_free(GameConfig *config);
  * @return The number of generations for which to run.
  */
 size_t game_config_get_generations(GameConfig *config);
+
+/**
+ * Returns the number of miliseconds.
+ *
+ * @param config Pointer to a GameConfig structure.
+ *
+ * @return The number of miliseconds.
+ */
+size_t game_config_get_miliseconds(GameConfig *config);
+
+/**
+ * Returns the quiet.
+ *
+ * @param config Pointer to a GameConfig structure.
+ *
+ * @return The quiet.
+ */
+size_t game_config_get_quiet(GameConfig *config);
 
 /**
  * Parses the command line and create a new GameConfig from it.
