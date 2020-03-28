@@ -45,6 +45,8 @@ int main(int argc, char *argv[])
   printf("Seed board:\n");
   game_print_board(game);
 
+  // starting the parallel part
+
   for (generation = 1; generation <= game_config_get_generations(config); generation++) {
     if (game_tick(game)) {
       fprintf(stderr, "Error while advancing to the next generation.\n");
